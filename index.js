@@ -30,3 +30,9 @@ bpmDecElem.addEventListener('click', () => {
     bpmElem.value = '' + (Number(bpmElem.value) - 5)
     audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm 
 })
+
+//set bpm even after pressing enter on input element
+
+bpmElem.addEventListener('change', () => {
+    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm 
+})
