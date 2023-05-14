@@ -12,8 +12,8 @@ bpmInputElem = document.querySelector("#full-speed")
 bpmElem = document.querySelector("#bpm")
 
 bpmButton.addEventListener('click', () => {
-    audioElem.dataset.fullBpm = bpmInputElem.value // sets full bpm as attritube
-    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullBpm // sets bpm after submit
+    audioElem.dataset.fullbpm = '' + Number(bpmInputElem.value) // sets full bpm as attritube
+    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm // sets bpm after submit
 })
 
 // increase / decrease buttons
@@ -22,11 +22,11 @@ bpmIncElem = document.querySelector("#Inc5")
 bpmDecElem = document.querySelector("#Dec5")
 
 bpmIncElem.addEventListener('click', () => {
-    bpmElem.value = bpmElem.value + 5
-    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullBpm 
+    bpmElem.value = '' + (Number(bpmElem.value) + 5)
+    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm 
 })
 
 bpmDecElem.addEventListener('click', () => {
-    bpmElem.value = bpmElem.value - 5
-    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullBpm 
+    bpmElem.value = '' + (Number(bpmElem.value) - 5)
+    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm 
 })
