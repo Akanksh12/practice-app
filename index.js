@@ -18,13 +18,15 @@ bpmButton.addEventListener('click', () => {
 
 // increase / decrease buttons
 
-bpmIncElem = document.querySelector("#+5")
-bpmDecElem = document.querySelector("#-5")
+bpmIncElem = document.querySelector("#Inc5")
+bpmDecElem = document.querySelector("#Dec5")
 
 bpmIncElem.addEventListener('click', () => {
-    bpmElem.value += 5
+    bpmElem.value = bpmElem.value + 5
+    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullBpm 
 })
 
 bpmDecElem.addEventListener('click', () => {
-    bpmElem.value -= 5
+    bpmElem.value = bpmElem.value - 5
+    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullBpm 
 })
