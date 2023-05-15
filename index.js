@@ -56,7 +56,7 @@ setTimeB.addEventListener('click', () => {
 let setLoop = (start,end) => {
     audioElem.addEventListener('timeupdate', () => {
         cTime = +audioElem.currentTime
-        if (Math.round(cTime) == Math.round(end)){
+        if (cTime.toFixed(3) == end.toFixed(3)){
             audioElem.currentTime = '' + start
         }
     })
