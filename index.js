@@ -50,3 +50,22 @@ setTimeA.addEventListener('click', () => {
 setTimeB.addEventListener('click', () => {
     timeB.value = '' + Number(audioElem.currentTime)
 })
+
+//loop functionality
+
+let setLoop = (start,end) => {
+    audioElem.addEventListener('timeupdate', () => {
+        cTime = Number(audioElem.currentTime)
+        if (Math.round(cTime) == Math.round(end)){
+            audioElem.currentTime = '' + start
+        }
+    })
+}
+
+document.querySelector("#set-loop").addEventListener('click', () => {
+    setLoop(Number(timeA.value), Number(timeB.value))
+})
+
+audioElem.addEventListener('timeupdate', () => {
+    console.log(Math.round(Number(audioElem.currentTime)))
+})
