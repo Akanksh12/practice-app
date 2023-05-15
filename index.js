@@ -36,3 +36,17 @@ bpmDecElem.addEventListener('click', () => {
 bpmElem.addEventListener('change', () => {
     audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm 
 })
+
+let setTimeA = document.querySelector("#set-time-a")
+let setTimeB = document.querySelector("#set-time-b")
+
+let timeA = document.querySelector("#time-a")
+let timeB = document.querySelector("#time-b")
+
+setTimeA.addEventListener('click', () => {
+    timeA.value = '' + Number(audioElem.currentTime)
+})
+
+setTimeB.addEventListener('click', () => {
+    timeB.value = '' + Number(audioElem.currentTime)
+})
