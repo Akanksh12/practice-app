@@ -12,7 +12,7 @@ bpmInputElem = document.querySelector("#full-speed")
 bpmElem = document.querySelector("#bpm")
 
 bpmButton.addEventListener('click', () => {
-    audioElem.dataset.fullbpm = '' + Number(bpmInputElem.value) // sets full bpm as attritube
+    audioElem.dataset.fullbpm = '' + bpmInputElem.value // sets full bpm as attritube
     audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm // sets bpm after submit
 })
 
@@ -22,12 +22,12 @@ bpmIncElem = document.querySelector("#Inc5")
 bpmDecElem = document.querySelector("#Dec5")
 
 bpmIncElem.addEventListener('click', () => {
-    bpmElem.value = '' + (Number(bpmElem.value) + 5)
+    bpmElem.value = '' + (+bpmElem.value + 5)
     audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm 
 })
 
 bpmDecElem.addEventListener('click', () => {
-    bpmElem.value = '' + (Number(bpmElem.value) - 5)
+    bpmElem.value = '' + (+bpmElem.value - 5)
     audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm 
 })
 
@@ -44,18 +44,18 @@ let timeA = document.querySelector("#time-a")
 let timeB = document.querySelector("#time-b")
 
 setTimeA.addEventListener('click', () => {
-    timeA.value = '' + Number(audioElem.currentTime)
+    timeA.value = '' + audioElem.currentTime
 })
 
 setTimeB.addEventListener('click', () => {
-    timeB.value = '' + Number(audioElem.currentTime)
+    timeB.value = '' + audioElem.currentTime
 })
 
 //loop functionality
 
 let setLoop = (start,end) => {
     audioElem.addEventListener('timeupdate', () => {
-        cTime = Number(audioElem.currentTime)
+        cTime = +audioElem.currentTime
         if (Math.round(cTime) == Math.round(end)){
             audioElem.currentTime = '' + start
         }
@@ -63,9 +63,9 @@ let setLoop = (start,end) => {
 }
 
 document.querySelector("#set-loop").addEventListener('click', () => {
-    setLoop(Number(timeA.value), Number(timeB.value))
+    setLoop(+timeA.value, +timeB.value)
 })
 
 audioElem.addEventListener('timeupdate', () => {
-    console.log(Math.round(Number(audioElem.currentTime)))
+    console.log(+audioElem.currentTime.toFixed(3))
 })
