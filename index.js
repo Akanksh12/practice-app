@@ -50,6 +50,7 @@ setTimeA.addEventListener('click', () => {
 
 setTimeB.addEventListener('click', () => {
     timeB.value = '' + audioElem.currentTime
+    setLoop(+timeA.value, +timeB.value)
 })
 
 //loop functionality
