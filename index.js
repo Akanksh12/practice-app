@@ -73,15 +73,16 @@ let setLoop = (start,end) => {
         if (+cTime.toFixed() == +end.toFixed()){
             audioElem.currentTime = '' + start
         }
+        if (looping.checked !== true){
+            return
+        }
     })
 }
 
 let looping = document.querySelector("#looping")
 looping.addEventListener('click', () => {
     if (looping.checked !== true){
-        timeA.value = Infinity
-        timeB.value = Infinity
-        setLoop(+timeA.value, +timeB.value)
+        setLoop(Infinity, Infinity)
     } else {
         setLoop(+timeA.value, +timeB.value)
     }
