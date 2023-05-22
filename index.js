@@ -67,7 +67,3 @@ let setLoop = (start,end) => {
 document.querySelector("#set-loop").addEventListener('click', () => {
     setLoop(+timeA.value, +timeB.value)
 })
-
-audioElem.addEventListener('timeupdate', () => {
-    console.log(+audioElem.currentTime.toFixed())
-})
