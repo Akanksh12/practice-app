@@ -15,6 +15,7 @@ bpmButton.addEventListener('click', () => {
     audioElem.dataset.fullbpm = '' + bpmInputElem.value // sets full bpm as attritube
     audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm // sets bpm after submit
     bpmElem.value = bpmInputElem.value // setting 100% speed on default
+    audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm // fixes full speed playback
 })
 
 // increase / decrease buttons
@@ -44,13 +45,24 @@ let setTimeB = document.querySelector("#set-time-b")
 let timeA = document.querySelector("#time-a")
 let timeB = document.querySelector("#time-b")
 
+// event listener for buttons
 setTimeA.addEventListener('click', () => {
     timeA.value = '' + audioElem.currentTime
 })
 
 setTimeB.addEventListener('click', () => {
     timeB.value = '' + audioElem.currentTime
-    setLoop(+timeA.value, +timeB.value)
+    if (looping.checked !== false) {
+        setLoop(+timeA.value, +timeB.value)
+    }
+})
+
+// event listener for inputs
+
+timeB.addEventListener('change', () => {
+    if (looping.checked !== false) {
+        setLoop(+timeA.value, +timeB.value)
+    }
 })
 
 //loop functionality
@@ -64,6 +76,13 @@ let setLoop = (start,end) => {
     })
 }
 
-document.querySelector("#set-loop").addEventListener('click', () => {
-    setLoop(+timeA.value, +timeB.value)
+let looping = document.querySelector("#looping")
+looping.addEventListener('click', () => {
+    if (looping.checked !== true){
+        timeA.value = Infinity
+        timeB.value = Infinity
+        setLoop(+timeA.value, +timeB.value)
+    } else {
+        setLoop(+timeA.value, +timeB.value)
+    }
 })
