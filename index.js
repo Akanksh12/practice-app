@@ -14,6 +14,7 @@ bpmElem = document.querySelector("#bpm")
 bpmButton.addEventListener('click', () => {
     audioElem.dataset.fullbpm = '' + bpmInputElem.value // sets full bpm as attritube
     audioElem.playbackRate = bpmElem.value / audioElem.dataset.fullbpm // sets bpm after submit
+    bpmElem.value = bpmInputElem.value // setting 100% speed on default
 })
 
 // increase / decrease buttons
